@@ -9,4 +9,7 @@ M = np.asarray(image)
 data = Image.fromarray(M)
 #save the image tp the file
 #data.save('output.png')
-print(M)
+print(M) 
+a=7
+b=5 
+print(str(a)+str(b))
