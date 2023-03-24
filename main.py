@@ -3,7 +3,7 @@ import numpy.linalg as linalg
 import sys
 from PIL import Image
 import matplotlib.pyplot as plt
-r = 500 #512 (256 )
+r = 480 #512 (256 )
 Maxiter = 500
 Ro = float('inf')
 t = 0
@@ -24,7 +24,8 @@ while 1:
         break
     U,S,V= linalg.svd(Y)
     Vbarre = np.dot(Vbarre,np.dot(U,V.T))  
-S = np.where(Vbarre < 0, 0, Vbarre) #Vbarre Plus
+#S = np.where(Vbarre < 0, 0, Vbarre) #Vbarre Plus
+S = np.dot(Vbarre,Y)
 aux = np.dot(M,Vbarre)
 W = np.dot(aux,linalg.inv(Y.T)) # transposé de la matrice diagonale inferieure de Y
                                 # Il s'agit de l'inverse de la transposée de la matrice Y
