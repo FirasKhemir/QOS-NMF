@@ -3,7 +3,8 @@ import numpy.linalg as linalg
 import sys
 from PIL import Image
 import matplotlib.pyplot as plt
-r = 480 #512 (256 )
+from sklearn.metrics import mean_absolute_error
+r = 500 #512 (256 )
 Maxiter = 500
 Ro = float('inf')
 t = 0
@@ -35,4 +36,6 @@ data = Image.fromarray(out)
 plt.imshow(data, cmap='gray')
 plt.show()
 new_p = data.convert("L")
-new_p.save("output"+str(r)+".png")
+new_p.save("output"+str(r)+"v2.png")
+loss = mean_absolute_error(out, M)    #mean square error
+print(loss)
