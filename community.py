@@ -27,11 +27,14 @@ H = model.components_
 
 # Step 3.2: Perform NMF using COS-NMF
 # print(P.shape[0])
-W, H = COSNMF(P, P.shape[0])
+#W, H = COSNMF(P, P.shape[0])
+model = NMF(n_components=2, init='random', random_state=0)
+W1 = model.fit_transform(P)
+H1 = model.components_
 
 # Step 4: Extract the communities
-n_communities = 7
-kmeans = KMeans(n_clusters=n_communities, random_state=0, n_init=10).fit(W)
+n_communities = 3
+kmeans = KMeans(n_clusters=n_communities, random_state=0, n_init=10).fit(W1)
 communities = kmeans.labels_
 
 print("Number of communities:", n_communities, "\nCommunities:", communities)
