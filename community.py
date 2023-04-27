@@ -5,6 +5,10 @@ from sklearn.cluster import KMeans
 from cos_nmf import COSNMF
 import matplotlib.pyplot as plt
 
+
+
+
+ground_truth = [0,0,0,0,0,0,0,0,1,1,0,0,0,0,1,1,0,0,1,0,1,0,1,1,1,1,1,1,1,1,1,1,1,1]
 # Load the graph from the .gml file
 G = nx.read_gml("karate.gml", label='id')
 
@@ -33,7 +37,7 @@ W1 = model.fit_transform(P)
 H1 = model.components_
 
 # Step 4: Extract the communities
-n_communities = 3
+n_communities = 2
 kmeans = KMeans(n_clusters=n_communities, random_state=0, n_init=10).fit(W1)
 communities = kmeans.labels_
 
@@ -59,5 +63,9 @@ nx.draw_networkx(G, pos, edge_color='k',  with_labels=True,font_weight='light', 
 colors = ['b', 'r', 'g', 'c', 'm', 'y', 'k']
 for i in range(n_communities):
     nx.draw_networkx_nodes(G, pos, nodelist=node_lists[i], node_color=colors[i])
+    
 
+result = [i for i in communities]
+print(result)
+print(ground_truth)
 plt.show()

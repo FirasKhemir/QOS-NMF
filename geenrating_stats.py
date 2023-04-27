@@ -4,6 +4,11 @@ import sys
 from PIL import Image
 import matplotlib.pyplot as plt
 from sklearn.metrics import mean_absolute_error
+import time
+
+
+start = time.time()
+
 
 A,B=[],[]
 for i in range(512,300,-1):
@@ -46,3 +51,7 @@ for i in range(512,300,-1):
 plt.plot(A,B)
 plt.gca().invert_xaxis()
 plt.show()
+
+
+end = time.time()
+print(end - start)
