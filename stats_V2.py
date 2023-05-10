@@ -12,7 +12,7 @@ gray_img = image.convert("L")
 M = np.asarray(gray_img)
 
 A,B=[],[]
-for i in range(511,500,-1):
+for i in range(512,300,-10):
     r = i
     W,S=COSNMFV2(M,r)
     out = np.dot(W,S.T)
@@ -21,4 +21,5 @@ for i in range(511,500,-1):
     B.append(loss)
 plt.plot(A,B)
 plt.gca().invert_xaxis()
+plt.savefig('loss_curve.png')
 plt.show()
